@@ -61,12 +61,18 @@ int main() {
 
 	int minutes, seconds;
 	uart.disp("enter the starting minutes: ");
-	while (rx_fifo_empty()){
-	minutes = uart.rx_byte();
+	while (rx_fifo_empty()){	//busy-waiting loop
+		minutes = uart.rx_byte();
+		if minutes != null{
+			break;
+		}
 	}
-	while (rx_fifo_empt())){
 	uart.disp("enter the starting seconds: ");
-	seconds = uart.rx_byte();
+	while (rx_fifo_empty())){	//busy-waiting loop
+		seconds = uart.rx_byte();
+		if seconds != null{
+			break;
+		}
 	}
 
    while (1) {
